@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     if (docs.length > 0) {
       await prisma.version.createMany({
         data: docs.map((d) => ({
-          bandId,
+          bandId: band.id,
           song,
           songLabel,
           identifier: d.identifier,
