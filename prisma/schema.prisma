@@ -1,0 +1,43 @@
+// Prisma schema for REWIND
+//
+// Set up for Postgres (Neon, Supabase, Vercel Postgres, etc.) — see
+// README.md for a no-code, click-through deployment guide.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Version {
+  id         String   @id @default(cuid())
+  bandId     String
+  song       String // normalized (lowercase) song key used for lookups
+  songLabel  String // original display casing
+  identifier String   @unique // archive.org identifier
+  title      String
+  date       String?
+  venue      String?
+  createdAt  DateTime @default(now())
+
+  ratings Rating[]
+
+  @@index([bandId, song])
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  versionId String
+  sessionId String
+  stars     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  version Version @relation(fields: [versionId], references: [id], onDelete: Cascade)
+
+  @@unique([versionId, sessionId])
+  @@index([versionId])
+}

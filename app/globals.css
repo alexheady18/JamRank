@@ -1,0 +1,345 @@
+:root {
+  --bg: #14121f;
+  --panel: #1c1a2b;
+  --paper: #f3ead8;
+  --ink: #241f1a;
+  --gold: #d9a441;
+  --teal: #2f8f83;
+  --rust: #c1442a;
+  --muted: #a79fc0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--paper);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.title {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 4px 0 6px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+/* Band grid (home page) */
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.band-card {
+  display: block;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  border: 1px solid rgba(243, 234, 216, 0.08);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.band-card:hover {
+  border-color: rgba(243, 234, 216, 0.25);
+  transform: translateY(-2px);
+}
+
+.band-card .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-bottom: 14px;
+}
+
+.band-card .name {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.band-card .count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Song chip bar */
+.song-bar {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.song-chip {
+  font-size: 12.5px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(243, 234, 216, 0.14);
+  background: rgba(243, 234, 216, 0.04);
+  color: var(--paper);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.song-chip.active {
+  background: var(--gold);
+  color: #1c1400;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.custom-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 4px 6px 4px 10px;
+}
+
+.custom-input {
+  background: transparent;
+  border: none;
+  color: var(--paper);
+  font-size: 13px;
+  outline: none;
+  width: 160px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.custom-input::placeholder {
+  color: var(--muted);
+}
+
+.custom-go {
+  background: var(--teal);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  color: #0d1f1c;
+}
+
+/* List head */
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.list-title {
+  font-family: "Fraunces", serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.sort-toggle {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+}
+
+.sort-toggle button,
+.refresh-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+}
+
+.sort-toggle button.active {
+  color: var(--gold);
+}
+
+/* Version cards */
+.version-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.version-card {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 16px 16px 14px;
+  background-image: radial-gradient(circle at 0 50%, var(--bg) 5px, transparent 6px),
+    radial-gradient(circle at 100% 50%, var(--bg) 5px, transparent 6px);
+}
+
+.version-card::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 46px;
+  border-bottom: 1.5px dashed rgba(36, 31, 26, 0.25);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-venue {
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.25;
+}
+
+.card-date {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  color: rgba(36, 31, 26, 0.6);
+  margin-top: 3px;
+}
+
+.counter {
+  font-family: "IBM Plex Mono", monospace;
+  background: #1c1a2b;
+  color: var(--gold);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  min-width: 44px;
+  text-align: center;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.vote-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px;
+  color: rgba(36, 31, 26, 0.55);
+  margin-top: 4px;
+}
+
+.card-link {
+  color: rgba(36, 31, 26, 0.55);
+  display: flex;
+  align-items: center;
+}
+
+.state-msg {
+  padding: 40px 10px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.state-msg.error {
+  color: #e08a75;
+}
+
+.state-msg.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.retry-btn {
+  background: var(--teal);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.footer-note {
+  margin-top: 30px;
+  font-size: 11.5px;
+  color: rgba(167, 159, 192, 0.7);
+  line-height: 1.6;
+  border-top: 1px solid rgba(243, 234, 216, 0.08);
+  padding-top: 14px;
+}
+
+.back-link {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
