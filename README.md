@@ -1,7 +1,7 @@
-# REWIND — Jam Band Tape Vault
+# JamRank — Jam Band Tape Vault
 
 Rate live versions of jam band songs, pulled straight from the Internet
-Archive's etree collection. Covers Grateful Dead, Phish, Widespread
+Archive's entire collection. Covers Grateful Dead, Phish, Widespread
 Panic, Umphrey's McGee, Goose, and STS9 to start — easy to add more.
 
 ## Deploying — no coding or terminal required
